@@ -1,0 +1,16 @@
+<%= form_for Show.new, :url => shows_path do |f| %>
+
+  <p>
+    <%= f.label :name, "Name" %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :recurring_rules, "Repeats?" %><br/>
+    <%= f.select_recurring :recurring_rules %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
