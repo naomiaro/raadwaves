@@ -11,13 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014033027) do
+ActiveRecord::Schema.define(version: 20141123063241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "show_instances", force: true do |t|
+    t.integer  "show_id"
+    t.integer  "show_rule_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "show_rules", force: true do |t|
+    t.integer  "show_id"
+    t.date     "start_date"
+    t.time     "start_time"
+    t.date     "end_date"
+    t.time     "end_time"
+    t.string   "timezone"
+    t.boolean  "repeats"
+    t.text     "rrule"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shows", force: true do |t|
     t.string   "name"
+    t.string   "description"
+    t.string   "color"
+    t.string   "background_color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

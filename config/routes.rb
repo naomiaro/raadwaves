@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :show_instances
+
   resources :shows
 
   get 'shows/index'
