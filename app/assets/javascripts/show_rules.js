@@ -1,7 +1,7 @@
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
 $.fn.datepicker.defaults.autoclose = true;
 
-$(document).ready(function(){
+$(document).on('ready page:load', function () {
 
   $('.checkbox input').click(function(e){
     $('.show-rrule').toggleClass("hidden");
@@ -17,5 +17,4 @@ $(document).ready(function(){
     showInputs: false,
     template: false
   });
-
 });

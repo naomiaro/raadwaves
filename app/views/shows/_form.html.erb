@@ -29,11 +29,7 @@
 
       <%= ff.check_box :repeats %>
 
-      <%= content_tag :div, {class: (ff.object.repeats ? "show" : "hidden") + " show-rrule"} do %>
-
-        <%= ff.select_recurring :rrule %>
-
-      <% end %>
+      <%= ff.select_recurring :rrule %>
 
       <% if ff.object.persisted? %>
         <%= ff.check_box :_destroy %>

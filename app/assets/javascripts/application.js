@@ -17,4 +17,6 @@
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
 //= require recurring_select
+//= require moment
+//= require fullcalendar
 //= require_tree .

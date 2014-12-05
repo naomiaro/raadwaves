@@ -28,6 +28,7 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       if @show.save
+        @show.generate
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
         format.json { render :show, status: :created, location: @show }
       else

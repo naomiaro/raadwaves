@@ -4,7 +4,15 @@ class ShowInstancesController < ApplicationController
   # GET /show_instances
   # GET /show_instances.json
   def index
-    @show_instances = ShowInstance.all
+
+    timezone = params[:timezone]
+
+    Time.use_zone(timezone) do
+      starts = Time.zone.parse params[:start]
+      ends = Time.zone.parse params[:end]
+
+      @show_instances = ShowInstance.start_between(starts, ends)
+    end
   end
 
   # GET /show_instances/1
@@ -58,6 +66,16 @@ class ShowInstancesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to show_instances_url, notice: 'Show instance was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def events
+    @events = ShowInstance.all.map do |si|
+
+    end
+
+    respond_to do |format|
+      format.json { render json: @events }
     end
   end
 

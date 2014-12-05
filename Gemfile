@@ -35,6 +35,12 @@ gem 'bootstrap-timepicker-rails'
 gem 'ice_cube'
 gem 'recurring_select', git: 'git://github.com/naomiaro/recurring_select.git'
 
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
+
+gem 'daemons'
+gem 'delayed_job_active_record'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
