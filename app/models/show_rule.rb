@@ -34,10 +34,6 @@ class ShowRule < ActiveRecord::Base
     make_datetime(:end_date, :end_time)
   end
 
-  def repeats?
-    :repeats
-  end
-
   private
 
   def make_datetime(date_attr, time_attr)

@@ -1,18 +1,20 @@
 class ShowInstancesController < ApplicationController
   before_action :set_show_instance, only: [:show, :edit, :update, :destroy]
+  around_filter :set_time_zone
+
+  def set_time_zone
+    tz = params.fetch(:timezone, 'UTC')
+    Time.use_zone(tz) { yield }
+  end
 
   # GET /show_instances
   # GET /show_instances.json
   def index
 
-    timezone = params[:timezone]
+    starts = Time.zone.parse params[:start]
+    ends = Time.zone.parse params[:end]
 
-    Time.use_zone(timezone) do
-      starts = Time.zone.parse params[:start]
-      ends = Time.zone.parse params[:end]
-
-      @show_instances = ShowInstance.start_between(starts, ends)
-    end
+    @show_instances = ShowInstance.start_between(starts, ends)
   end
 
   # GET /show_instances/1
@@ -69,14 +71,11 @@ class ShowInstancesController < ApplicationController
     end
   end
 
-  def events
-    @events = ShowInstance.all.map do |si|
+  def programs
+    starts = Time.zone.parse params[:start]
+    ends = Time.zone.parse params[:end]
 
-    end
-
-    respond_to do |format|
-      format.json { render json: @events }
-    end
+    @show_instances = ShowInstance.start_between(starts, ends)
   end
 
   private
