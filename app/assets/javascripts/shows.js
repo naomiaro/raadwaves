@@ -7,6 +7,9 @@ $(document).on('ready page:load', function () {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      timezone: 'America/Vancouver'
+      timezone: 'America/Vancouver',
+      timeFormat: 'H:mm',
+      axisFormat: 'H:mm',
+      displayEventEnd: true
   })
 });

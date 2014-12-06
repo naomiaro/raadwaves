@@ -75,7 +75,7 @@ class ShowInstancesController < ApplicationController
     starts = Time.zone.parse params[:start]
     ends = Time.zone.parse params[:end]
 
-    @show_instances = ShowInstance.start_between(starts, ends)
+    @programs = ShowInstance.start_between(starts, ends).includes(:show)
   end
 
   private
