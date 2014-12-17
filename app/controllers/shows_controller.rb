@@ -25,11 +25,11 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = Show.new(show_params)
-    binding.pry
 
     respond_to do |format|
       if @show.save
-        @show.generate
+        #testing
+        @show.generate(Time.zone.now + 2.months)
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
         format.json { render :show, status: :created, location: @show }
       else

@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
+  resources :settings
+
+  devise_for :users, controllers: { sessions: "users/sessions" }
   resources :show_instances
 
   resources :shows
 
-  get 'shows/index'
-
   get 'programs' => 'show_instances#programs'
+
+  #get 'shows/index'
+
+  root 'shows#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
